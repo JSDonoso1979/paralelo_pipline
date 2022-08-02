@@ -1,0 +1,61 @@
+pipeline{
+    agent any
+    
+    tools {nodejs "node"}
+
+    stages{
+
+        stage("Cypress paralel Test Suite") {
+            paralel{
+                stage("slave 1"){
+                    agent{
+                        label "Agente2_1"
+                    }
+                    steps{
+                        git url: "https://github.com/JSDonoso1979/paralelo_pipline.git"
+                        bat "npm install"
+                        bat "npm update"
+                        bat "npx cypress run --record --key 4f7e6793-e4e0-460e-b9b4-ddc2cf36f099 --parallel"
+                    }
+                }
+
+                stage("slave 2"){
+                    agent{
+                        label "Agente2_2"
+                    }
+                    steps{
+                        git url: "https://github.com/JSDonoso1979/paralelo_pipline.git"
+                        bat "npm install"
+                        bat "npm update"
+                        bat "npx cypress run --record --key 4f7e6793-e4e0-460e-b9b4-ddc2cf36f099 --parallel"
+                    }
+                }
+
+                stage("slave 3"){
+                    agent{
+                        label "Agente2_3"
+                    }
+                    steps{
+                        git url: "https://github.com/JSDonoso1979/paralelo_pipline.git"
+                        bat "npm install"
+                        bat "npm update"
+                        bat "npx cypress run --record --key 4f7e6793-e4e0-460e-b9b4-ddc2cf36f099 --parallel"
+                    }
+                }
+
+                stage("slave 4"){
+                    agent{
+                        label "Agente2_4"
+                    }
+                    steps{
+                        git url: "https://github.com/JSDonoso1979/paralelo_pipline.git"
+                        bat "npm install"
+                        bat "npm update"
+                        bat "npx cypress run --record --key 4f7e6793-e4e0-460e-b9b4-ddc2cf36f099 --parallel"
+                    }
+                }
+
+            }
+        }
+    }
+}
