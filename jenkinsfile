@@ -48,7 +48,7 @@ pipeline{
                         label "Agente2_4"
                     }
                     steps{
-                        git url: "https://github.com/JSDonoso1979/paralelo_pipline.git"
+                       git url: "https://github.com/JSDonoso1979/paralelo_pipline.git"
                         bat "npm install"
                         bat "npm update"
                         bat "npx cypress run --record --key 4f7e6793-e4e0-460e-b9b4-ddc2cf36f099 --parallel"
